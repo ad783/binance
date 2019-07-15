@@ -1,7 +1,7 @@
 # Binance
 
 ## Overview
-binance is a lightweight Java library for interacting with the Binance API, providing buy and sell strategy on the basis of historic data simulated as real time data
+Binance is a lightweight Java library for interacting with the Binance API, providing buy and sell strategy on the basis of historic data simulated as real time data
 To get BIDs and ASKs order book
 
 
