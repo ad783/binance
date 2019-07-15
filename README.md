@@ -34,6 +34,4 @@ GET `http://localhost:8080/api/v1/binance/getDepthCache?symbol=BNBBTC` to get th
 
 GET `http://localhost:8080/api/v1/order-book/getOrderBook` to get the all order book stored on local cache/db
 
-![Design Flow of Supply](./binance_order.png)
-
 You can now proceed to test the APIs using Postman or implement new features.
