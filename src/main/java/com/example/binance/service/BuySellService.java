@@ -9,7 +9,7 @@ import com.binance.api.client.domain.account.Order;
 import com.example.binance.model.OrderBookUpdateModel;
 import org.springframework.scheduling.annotation.Async;
 
-public interface BuyAndSellService {
+public interface BuySellService {
     NewOrderResponse newOrderAction(String symbol, String buyingPrice, OrderSide orderSide, OrderType orderType, String quantity);
 
     Order getOrderStatus(NewOrderResponse sellOrderResponse);

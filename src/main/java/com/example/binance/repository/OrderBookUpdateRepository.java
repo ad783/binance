@@ -2,7 +2,7 @@ package com.example.binance.repository;
 /* Created by Ahmed Saifi on 13/07/19. */
 
 import com.example.binance.entity.OrderBookUpdate;
-import com.example.binance.model.PriceAndQuantity;
+import com.example.binance.model.PriceQuantity;
 import com.google.gson.Gson;
 import org.influxdb.InfluxDB;
 import org.influxdb.dto.Point;
@@ -38,7 +38,7 @@ public class OrderBookUpdateRepository {
     }
 
     public List<OrderBookUpdate> getOrderBookUpdate(String symbol){
-        Query query = new Query("SELECT * FROM order_book_update where symbol = " + symbol, "binance");
+        Query query = new Query("SELECT * FROM order_book_update where symbol ='" + symbol + "'", "binance");
         QueryResult queryResult = influxDB.query(query);
         return  influxDBResultMapper.toPOJO(queryResult, OrderBookUpdate.class);
     }
@@ -53,8 +53,8 @@ public class OrderBookUpdateRepository {
                 .addField("symbol", symbol)
                 .addField("asks", gson.toJson(asks))
                 .addField("bids", gson.toJson(bids))
-                .addField("best_ask", gson.toJson(new PriceAndQuantity(asks.lastEntry().getKey(),asks.lastEntry().getValue())))
-                .addField("best_bid", gson.toJson(new PriceAndQuantity(bids.firstEntry().getKey(),bids.firstEntry().getValue())))
+                .addField("best_ask", gson.toJson(new PriceQuantity(asks.lastEntry().getKey(),asks.lastEntry().getValue())))
+                .addField("best_bid", gson.toJson(new PriceQuantity(bids.firstEntry().getKey(),bids.firstEntry().getValue())))
                 .build();
         influxDB.write(point);
     }

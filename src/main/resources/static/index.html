@@ -1,0 +1,86 @@
+<html>
+<head>
+    <title>Binance</title>
+    <script src="https://cdn.jsdelivr.net/sockjs/1/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+    <script src="https://unpkg.com/vue"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <h1 align="center">Binance Asks And Bids</h1>
+    <div align="center">
+        <select v-model="selected">
+            <option v-for="symbol in symbols" v-bind:value="symbol">
+                {{ symbol }}
+            </option>
+        </select>
+        <span>Showing Results For : {{ x }}/{{ y }}</span>
+    </div>
+
+    <div class="row">
+
+        <div class="column">
+            <h3>Asks</h3>
+            <ul>
+                <li v-for="(value, name) in list1">Price({{ y }}):{{name}} ---- Amount({{ x }}):{{value}} ----- Total({{ y }}):{{name * value}}</li>
+            </ul>
+        </div>
+
+        <div class="column">
+            <h3>Bids</h3>
+            <ul>
+                <li v-for="(value, name) in list2">Price({{ y }}):{{name}} ---- Amount({{ x }}):{{value}} ---- Total({{ y }}):{{name * value}}</li>
+            </ul>
+        </div>
+
+    </div>
+
+</div>
+</body>
+<script>
+    let stompClient = null;
+    var vm = new Vue({
+        el: '#app',
+        mounted: function () {
+            axios.get('http://localhost:8080/api/v1/binance/getAllSymbols')
+                .then(function (response) {
+                    // handle success
+                    console.log(response);
+                    vm.symbols = response.data;
+                    vm.selected = response.data[0];
+                })
+                .catch(function (error) {
+                    console.log(error);
+                })
+                .finally(function () {
+                });
+            this.$nextTick(function () {
+                let socket = new SockJS('/asks-bids-info');
+                stompClient = Stomp.over(socket);
+                stompClient.connect({}, function (frame) {
+                    stompClient.subscribe('/asks-bids/price-quantity', function (val) {
+                        var symbols = JSON.parse(val.body);
+                        vm.list1 = symbols[vm.selected]["ASKS"];
+                        vm.list2 = symbols[vm.selected]["BIDS"];
+                        vm.x = vm.selected.substring(0, vm.selected.length - 3);
+                        vm.y = vm.selected.substring(vm.selected.length - 3, vm.selected.length);
+                    });
+                });
+            });
+        },
+        data: function () {
+            return {
+                message: 'Dynamic Content',
+                list1: [],
+                list2: [],
+                selected: '',
+                symbols: null,
+                x:'',
+                y:'',
+            }
+        }
+    })
+</script>
+
+</html>

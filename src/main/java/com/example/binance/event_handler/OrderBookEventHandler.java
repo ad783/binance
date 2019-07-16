@@ -7,7 +7,7 @@ import com.example.binance.Constants;
 import com.example.binance.binance_enum.BinanceFixedPairElementEnum;
 import com.example.binance.model.OrderBookUpdateModel;
 import com.example.binance.service.BinanceService;
-import com.example.binance.service.BuyAndSellService;
+import com.example.binance.service.BuySellService;
 import com.example.binance.service.OrderBookService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,12 +30,12 @@ public class OrderBookEventHandler {
     private TickerStatistics btcusdtPrice;
 
     private final BinanceService binanceApiService;
-    private final BuyAndSellService buyAndSellService;
+    private final BuySellService buyAndSellService;
     private final OrderBookService orderBookService;
 
     @Autowired
     public OrderBookEventHandler(BinanceService binanceApiService,
-                                 BuyAndSellService buyAndSellService,
+                                 BuySellService buyAndSellService,
                                  OrderBookService orderBookService) {
         this.binanceApiService = binanceApiService;
         this.buyAndSellService = buyAndSellService;

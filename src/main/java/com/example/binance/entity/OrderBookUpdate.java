@@ -9,25 +9,25 @@ import java.time.Instant;
 @Measurement(name = "order_book_update")
 public class OrderBookUpdate {
     @Column(name = "time")
-    private Instant time;
+    public Instant time;
 
     @Column(name = "event_time")
-    private Long eventTime;
+    public Long eventTime;
 
     @Column(name = "symbol")
-    private String symbol;
+    public String symbol;
 
     @Column(name = "asks")
-    private String asks;
+    public String asks;
 
     @Column(name = "bids")
-    private String bids;
+    public String bids;
 
     @Column(name = "best_ask")
-    private String bestAsk;
+    public String bestAsk;
 
     @Column(name = "best_bid")
-    private String bestBid;
+    public String bestBid;
 
     public Instant getTime() {
         return time;

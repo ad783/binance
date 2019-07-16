@@ -4,14 +4,14 @@ package com.example.binance.model;
 
 import java.math.BigDecimal;
 
-public class PriceAndQuantity {
+public class PriceQuantity {
     private BigDecimal price;
     private BigDecimal quantity;
 
-    public PriceAndQuantity() {
+    public PriceQuantity() {
     }
 
-    public PriceAndQuantity(BigDecimal price, BigDecimal quantity) {
+    public PriceQuantity(BigDecimal price, BigDecimal quantity) {
         this.price = price;
         this.quantity = quantity;
     }

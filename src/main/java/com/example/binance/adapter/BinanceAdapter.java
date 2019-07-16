@@ -5,7 +5,7 @@ package com.example.binance.adapter;
 import com.binance.api.client.domain.market.OrderBookEntry;
 import com.example.binance.entity.OrderBookUpdate;
 import com.example.binance.model.OrderBookUpdateModel;
-import com.example.binance.model.PriceAndQuantity;
+import com.example.binance.model.PriceQuantity;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import org.springframework.util.CollectionUtils;
@@ -34,7 +34,7 @@ public class BinanceAdapter {
             Type type = new TypeToken<Map<BigDecimal,BigDecimal>>() {
             }.getType();
 
-            Type bestType = new TypeToken<PriceAndQuantity>() {
+            Type bestType = new TypeToken<PriceQuantity>() {
             }.getType();
 
             for (OrderBookUpdate orderBookUpdate : orderBookUpdateList) {

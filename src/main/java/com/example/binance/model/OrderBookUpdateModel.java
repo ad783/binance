@@ -11,8 +11,8 @@ public class OrderBookUpdateModel {
     private String symbol;
     private Map<BigDecimal,BigDecimal> asks;
     private Map<BigDecimal,BigDecimal> bids;
-    private PriceAndQuantity bestAsk;
-    private PriceAndQuantity bestBid;
+    private PriceQuantity bestAsk;
+    private PriceQuantity bestBid;
 
     public Long getTime() {
         return time;
@@ -54,19 +54,19 @@ public class OrderBookUpdateModel {
         this.bids = bids;
     }
 
-    public PriceAndQuantity getBestAsk() {
+    public PriceQuantity getBestAsk() {
         return bestAsk;
     }
 
-    public void setBestAsk(PriceAndQuantity bestAsk) {
+    public void setBestAsk(PriceQuantity bestAsk) {
         this.bestAsk = bestAsk;
     }
 
-    public PriceAndQuantity getBestBid() {
+    public PriceQuantity getBestBid() {
         return bestBid;
     }
 
-    public void setBestBid(PriceAndQuantity bestBid) {
+    public void setBestBid(PriceQuantity bestBid) {
         this.bestBid = bestBid;
     }
 }

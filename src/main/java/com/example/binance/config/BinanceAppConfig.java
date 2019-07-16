@@ -5,6 +5,7 @@ import com.binance.api.client.BinanceApiAsyncRestClient;
 import com.binance.api.client.BinanceApiClientFactory;
 import com.binance.api.client.BinanceApiRestClient;
 import com.binance.api.client.BinanceApiWebSocketClient;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import org.influxdb.impl.InfluxDBResultMapper;
 import org.springframework.context.annotation.Bean;
@@ -38,5 +39,10 @@ public class BinanceAppConfig {
     @Bean
     public Gson gson(){
         return new Gson();
+    }
+
+    @Bean
+    public ObjectMapper objectMapper(){
+        return new ObjectMapper();
     }
 }

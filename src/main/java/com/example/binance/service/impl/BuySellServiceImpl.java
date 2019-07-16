@@ -14,7 +14,7 @@ import com.binance.api.client.domain.account.request.OrderStatusRequest;
 import com.example.binance.Constants;
 import com.example.binance.adapter.BinanceAdapter;
 import com.example.binance.model.OrderBookUpdateModel;
-import com.example.binance.service.BuyAndSellService;
+import com.example.binance.service.BuySellService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,16 +25,16 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Service
-public class BuyAndSellServiceImpl implements BuyAndSellService {
+public class BuySellServiceImpl implements BuySellService {
 
 
-    private static final Logger LOG = LoggerFactory.getLogger(BuyAndSellServiceImpl.class);
+    private static final Logger LOG = LoggerFactory.getLogger(BuySellServiceImpl.class);
     private Map<String, Long> symbolVs10sWindowThresholdTime = new HashMap<>();
 
     private final BinanceApiRestClient binanceApiRestClient;
 
     @Autowired
-    public BuyAndSellServiceImpl(BinanceApiRestClient binanceApiRestClient) {
+    public BuySellServiceImpl(BinanceApiRestClient binanceApiRestClient) {
         this.binanceApiRestClient = binanceApiRestClient;
     }
 
