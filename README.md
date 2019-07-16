@@ -37,7 +37,7 @@ GET `http://localhost:8080/api/v1/order-book/getOrderBook?symbol=BNBBTC` to get 
 
 Hit `http://localhost:8080' to go to the homepage
 
-![Binance Asks And Bids 1](./binance_png1)
-![Binance Asks And Bids 2](./binance_png2)
+![Binance Asks And Bids 1](./binance_png1.png)
+![Binance Asks And Bids 2](./binance_png2.png)
 
 You can now proceed to test the APIs using Postman or implement new features.
